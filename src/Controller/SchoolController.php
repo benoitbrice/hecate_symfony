@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SchoolController extends AbstractController
 {
-    #[Route('/school', name: 'app_school')]
+    #[Route('/', name: 'app_school')]
     public function index(SchoolRepository $schoolRepository): Response
     {
         //je recupere toutes les ecoles
