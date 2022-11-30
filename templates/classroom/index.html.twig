@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClassroomController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Liste des salles de cours</h1>
+
+    <a href="{{ path('app_classroom_add') }}">
+        Ajouter une salle de cours
+    </a>
+    <table>
+        <tr>
+            <td>nom</td>
+            <td>capacité</td>
+            <td>Ecole</td>
+            <td>Action</td>
+        </tr>
+        {% for classroom in listClassroom %}
+        <tr>
+            <td>{{ classroom.name }}</td>
+            <td>{{ classroom.capacity }}</td>
+            <td>{{ classroom.school.name }}</td>
+            <td>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

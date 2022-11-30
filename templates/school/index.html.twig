@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SchoolController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Liste des ecoles</h1>
+
+    <a href="{{ path('app_school_add') }}">Ajouter une ecole</a>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Nom de l'ecole</td>
+                <td>Coordonnées</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for school in listSchool  %}
+                <tr>
+                    <td>{{ school.name }}</td>
+                    <td></td>
+                    <td>
+                    <a href="{{ path('app_school_details', {'id':school.id}) }}">Details</a>
+                    <a href="{{ path('app_school_edit', {'id':school.id}) }}">Modifier</a>
+                    <a href="{{ path('app_school_remove', {'id':school.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

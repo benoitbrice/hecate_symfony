@@ -1,0 +1,7 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+api_test_toto:
+    path:       /test/page3
+    controller: App\Controller\TestController::page2
+    methods:    GET|HEAD
