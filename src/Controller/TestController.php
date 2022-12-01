@@ -7,6 +7,7 @@ use App\Entity\School;
 use App\Repository\ClassroomRepository;
 use App\Repository\SchoolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,6 +18,28 @@ class TestController extends AbstractController
     public function __construct()
     {
         $this->maValeur = 10;
+    }
+
+    #[Route('/definesession', name: 'app_define_session')]
+    public function defineSession(RequestStack $requestStack){
+
+        $school = new School();
+        $school->setName('dfklgjdsmlgkjmlsdhjkgml');
+
+        $session = $requestStack->getSession();
+        $session->set('accueil', 'toto');
+        $session->set('school', $school);
+    }
+
+    #[Route('/recupsession', name: 'app_recup_session')]
+    public function recupSession(RequestStack $requestStack){
+
+        $session = $requestStack->getSession();
+        $test = $session->get('accueil');
+        $objSchool = $session->get('school');
+
+        dump($test);
+        dd($objSchool);
     }
 
     #[Route('/test/{id}', name: 'app_test')]

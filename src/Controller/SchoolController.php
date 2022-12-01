@@ -7,13 +7,14 @@ use App\Form\SchoolType;
 use App\Repository\SchoolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SchoolController extends AbstractController
 {
     #[Route('/', name: 'app_school')]
-    public function index(SchoolRepository $schoolRepository): Response
+    public function index(SchoolRepository $schoolRepository, RequestStack $requestStack): Response
     {
         //je recupere toutes les ecoles
         $listSchool = $schoolRepository->findAll();

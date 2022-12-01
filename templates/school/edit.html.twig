@@ -10,8 +10,28 @@
 
 <div class="example-wrapper">
     <h1>Modification de l'ecole : {{ school.name }}</h1>
-    {{ form(formEdit) }}
+    {{ form_start(formEdit) }}
 
+        {{ form_row(formEdit.name) }}
+
+        {{ form_label(formEdit.address) }}
+        {{ form_widget(formEdit.address) }}
+        {{ form_errors(formEdit.address) }}
+        {{ form_help(formEdit.address) }}
+
+        {{ form_label(formEdit.postal_code) }}
+        {{ form_widget(formEdit.postal_code) }}
+        {{ form_errors(formEdit.postal_code) }}
+        {{ form_help(formEdit.postal_code) }}
+<p>
+        {{ form_label(formEdit.city) }}
+        {{ form_widget(formEdit.city) }}
+        {{ form_errors(formEdit.city) }}
+        {{ form_help(formEdit.city) }}
+</p>
+        {{ form_widget(formEdit.submit) }}
+
+    {{ form_end(formEdit, {'render_rest': false}) }}
     
 </div>
 {% endblock %}

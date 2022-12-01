@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\School;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -14,12 +15,13 @@ class SchoolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add('name')
+            ->add('address', TextType::class, [
                 'attr' => [
-                    'class' => 'toto'
+                    'class' => 'red form-control',
+                    'data-id' => 12
                 ]
             ])
-            ->add('address')
             ->add('postal_code')
             ->add('city')
             ->add('submit', SubmitType::class)
