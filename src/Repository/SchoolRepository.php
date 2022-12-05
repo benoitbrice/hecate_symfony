@@ -50,6 +50,17 @@ class SchoolRepository extends ServiceEntityRepository
 
     }
 
+    public function getSchoolByName($name){
+
+        return $this->createQueryBuilder('s')
+            ->where('s.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->orderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+
+    }
+
 //    /**
 //     * @return School[] Returns an array of School objects
 //     */
